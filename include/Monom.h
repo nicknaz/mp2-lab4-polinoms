@@ -12,6 +12,7 @@ public:
 	Monom operator+(const Monom& other);
 	Monom operator*(const Monom& other);
 	bool operator==(const Monom& other) const { return degree == other.degree; }
+	bool operator!=(const Monom& other) const { return degree != other.degree; }
 	bool operator<(const Monom& other) { return degree < other.degree; }
 
 	friend std::ostream& operator<<(std::ostream& out, const Monom& monom)
