@@ -39,7 +39,23 @@ public:
 	Polinom operator*(const double mnoj) const;
 	Polinom operator+(const Polinom& other) const;
 	Polinom operator-(const Polinom& other) const;
-	
+	bool operator==(const Polinom& other) const
+	{
+		auto node1 = monoms.head;
+		auto node2 = other.monoms.head;
+		while (node1 != nullptr) {
+			if (node1->value != node2->value) {
+				return false;
+			}
+			if (node1->next == nullptr && node2->next != nullptr || node1->next != nullptr && node2->next == nullptr) {
+				return false;
+			}
+			node1 = node1->next;
+			node2 = node2->next;
+		}
+		return true;
+	}
+	bool operator<(const Polinom& other) { return  monoms.head->value < other.monoms.head->value; }
 
 	void adjust();
 
